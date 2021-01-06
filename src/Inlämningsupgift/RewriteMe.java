@@ -56,8 +56,10 @@ public class RewriteMe {
     //Skapa en lista innehållandes samtliga frågesträngar där frågan tillhör en viss kategori
     //Kategorin ges som inparameter
     public List<String> getAllQuestionStringsBelongingACategory(Category category) {
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        return questions.stream()
+                .filter(question -> question.getCategory().equals(category)) //takes out the questions that have the category
+                .map(Question::getQuestionString) //Gets string versions of the questions
+                .collect(Collectors.toList()); //collects them and makes a list
     }
 
     //Skapa en lista av alla svarsalternativ, där varje svarsalternativ får förekomma
