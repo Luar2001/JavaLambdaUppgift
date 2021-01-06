@@ -74,8 +74,9 @@ public class RewriteMe {
 
     //Finns en viss sträng, given som inparameter, som svarsalternativ till någon fråga i vår databas?
     public boolean isThisAnAnswerOption(String answerCandidate) {
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        return questions.stream()
+                //finds any string that matches with answerCandidate, had to use 2 anyMatch because there is a list in a list.
+                .anyMatch(question -> question.getAllAnswers().stream().anyMatch(answer->answer.equals(answerCandidate)));
     }
 
     //Hur ofta förekommer ett visst svarsalternativ, givet som inparameter, i databasen
