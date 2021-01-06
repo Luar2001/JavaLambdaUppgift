@@ -1,7 +1,9 @@
 package Inlämningsupgift;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /*
 Inlämningsuppgit i kursen Funktionell Programmering för JAVA-programmet
@@ -34,14 +36,14 @@ public class RewriteMe {
 
     //Skriv en funktioner som returnerar hur många frågor det finns i databasen?
     public int getAmountOfQuestionsInDatabase() {
-
-        throw new UnsupportedOperationException("Not supported yet.");
+        return questions.size(); //returns how many questions there is in the questions list
     }
 
     //Hur många frågor finns i databasen för en viss, given kategori (som ges som inparameter)
     public int getAmountOfQuestionsForACertainCategory(Category category) {
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        return (int) questions.stream()
+                .filter(question -> question.getCategory().equals(category)) //takes out the questions that have the category
+                .count(); //returns how many (Returns a long)
     }
 
     //Skapa en lista innehållandes samtliga frågesträngar i databasen
