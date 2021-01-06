@@ -48,8 +48,9 @@ public class RewriteMe {
 
     //Skapa en lista innehållandes samtliga frågesträngar i databasen
     public List<String> getListOfAllQuestions() {
-
-        throw new UnsupportedOperationException("Not supported yet.");
+        return questions.stream()
+                .map(Question::getQuestionString) //Gets string versions of the questions
+                .collect(Collectors.toList()); //collects them and makes a list
     }
 
     //Skapa en lista innehållandes samtliga frågesträngar där frågan tillhör en viss kategori
