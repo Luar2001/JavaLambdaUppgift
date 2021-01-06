@@ -1,5 +1,6 @@
 package Inlämningsupgift;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -65,8 +66,10 @@ public class RewriteMe {
     //Skapa en lista av alla svarsalternativ, där varje svarsalternativ får förekomma
     // en och endast en gång i den lista som du ska returnera
     public List<String> getAllAnswerOptionsDistinct() {
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        return questions.stream()
+                .flatMap(question -> question.getAllAnswers().stream()) //gets all the strings in the getAllAnswers array and makes a stream that Collect can read
+                .distinct() //filters out duplicates
+                .collect(Collectors.toList()); //collects them and makes a list
     }
 
     //Finns en viss sträng, given som inparameter, som svarsalternativ till någon fråga i vår databas?
