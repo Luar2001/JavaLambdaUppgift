@@ -1,7 +1,6 @@
 package Inlämningsupgift;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -89,14 +88,17 @@ public class RewriteMe {
     //Skapa en Map där kategorierna är nycklar och värdena är en lista
     //av de frågesträngar som tillhör varje kategori
     public Map<Category, List<String>> getQuestionGroupedByCategory() {
+        return questions.stream()
+                .collect(Collectors.toMap(Question::getCategory, question -> getListOfAllQuestions()));
 
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     //Skapa en funktion som hittar det svarsalternativ som har flest bokstäver, i en kategori, given som inparameter
     // OBS: Du måste använda Reduce!
     public String getLongestLettercountAnwerInAGivenCategory(Category c) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        return "test";
+
     }
 
 }
